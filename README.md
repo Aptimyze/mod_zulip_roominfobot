@@ -49,7 +49,7 @@ Component "conference.meetings.example.com" "muc"
 modules_enabled = { "zulip_roominfobot"; }
 allowed_zulip_bots = { "$token" }
 ```
-   * if the `modules_enabled` already exists, add `"zulip_roominfo"` to it
+   * if the `modules_enabled` already exists, add `"zulip_roominfobot"` to it
    * replace `$token` in `allowed_zulip_bots` with the bot token which you can find in the **zuliprc** file
       * you can add multiple bot tokens to the table `allowed_zulip_bots` to allow multiple bots using the endpoint
 7. save and close the configuration
