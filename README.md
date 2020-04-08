@@ -33,16 +33,19 @@ This picture is from the Zulip server of the company where I work. The texts in 
 1. open `/etc/prosody/prosody.cfg.lua` and add the line `http_host = "meetings.example.com"` (replace the domain with yours)
 2. save and close the configuration
 3. open `/etc/prosody/conf.d/meetings.example.com.cfg.lua` (replace the filename with your domain) and add the following line:
-```lua
+
+```
 plugin_paths = { "/usr/local/lib/prosody/modules/" }
 ```
    * if this line already exists put the module in this folder, or add your path to the `plugin_paths` table
 5. now search the following line:
-```lua
+
+```
 Component "conference.meetings.example.com" "muc"
 ```
 6. add the following under this line:
-```lua
+
+```
 modules_enabled = { "zulip_roominfobot"; }
 allowed_zulip_bots = { "$token" }
 ```
@@ -59,7 +62,8 @@ If the plugin is loaded correctly, then you can send `POST` requests to http://m
 ### NGINX
 
 * If you use NGINX as reverse proxy you can add the following to it:
-```nginx
+
+```
 location /roominfobot {
     proxy_set_header X-Forwarded-For $remote_addr;
     proxy_set_header Host $http_host;
